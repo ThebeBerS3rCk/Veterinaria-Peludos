@@ -1,0 +1,1230 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Veterinaria Peludos</title>
+
+    <!-- Tipografias: serif para titulos, sans para texto, mono para detalles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <!-- Sistema de variables base: usar estos tokens para todo el color -->
+    <style>
+      :root {
+        --background: oklch(0.9588 0.0069 256.6805);
+        --foreground: oklch(0.2064 0.0388 265.5472);
+        --card: oklch(0.9183 0.0116 256.7000);
+        --card-foreground: oklch(0.2064 0.0388 265.5472);
+        --popover: oklch(0.9183 0.0116 256.7000);
+        --popover-foreground: oklch(0.2064 0.0388 265.5472);
+        --primary: oklch(0.5449 0.2154 262.7414);
+        --primary-foreground: oklch(0.9838 0.0035 247.8583);
+        --secondary: oklch(0.8777 0.0269 248.1339);
+        --secondary-foreground: oklch(0.2064 0.0388 265.5472);
+        --muted: oklch(0.8777 0.0269 248.1339);
+        --muted-foreground: oklch(0.5564 0.0398 256.8166);
+        --accent: oklch(0.8777 0.0269 248.1339);
+        --accent-foreground: oklch(0.2064 0.0388 265.5472);
+        --destructive: oklch(0.6356 0.2082 25.3782);
+        --destructive-foreground: oklch(0.9838 0.0035 247.8583);
+        --border: oklch(0.8334 0.0302 255.1196);
+        --input: oklch(0.8334 0.0302 255.1196);
+        --ring: oklch(0.5449 0.2154 262.7414);
+        --chart-1: oklch(0.5449 0.2154 262.7414);
+        --chart-2: oklch(0.7211 0.1415 253.1015);
+        --chart-3: oklch(0.6325 0.1843 258.6360);
+        --chart-4: oklch(0.8117 0.0970 249.0979);
+        --chart-5: oklch(0.8829 0.0573 251.9139);
+        --sidebar: oklch(0.9340 0.0111 256.6974);
+        --sidebar-foreground: oklch(0.2438 0.0507 265.3069);
+        --sidebar-primary: oklch(0.5449 0.2154 262.7414);
+        --sidebar-primary-foreground: oklch(0.9838 0.0035 247.8583);
+        --sidebar-accent: oklch(0.9023 0.0213 248.0647);
+        --sidebar-accent-foreground: oklch(0.5449 0.2154 262.7414);
+        --sidebar-border: oklch(0.8756 0.0224 255.0777);
+        --sidebar-ring: oklch(0.5449 0.2154 262.7414);
+        --font-sans: EB Garamond, serif;
+        --font-serif: EB Garamond, serif;
+        --font-mono: JetBrains Mono, monospace;
+        --radius: 0.4rem;
+        --shadow-x: 0px;
+        --shadow-y: 4px;
+        --shadow-blur: 12px;
+        --shadow-spread: 2px;
+        --shadow-opacity: 0.2;
+        --shadow-color: rgba(0, 40, 100, 0.1);
+        --shadow-2xs: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.10);
+        --shadow-xs: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.10);
+        --shadow-sm: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.20), 0px 1px 2px 1px hsl(216 100.0000% 19.6078% / 0.20);
+        --shadow: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.20), 0px 1px 2px 1px hsl(216 100.0000% 19.6078% / 0.20);
+        --shadow-md: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.20), 0px 2px 4px 1px hsl(216 100.0000% 19.6078% / 0.20);
+        --shadow-lg: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.20), 0px 4px 6px 1px hsl(216 100.0000% 19.6078% / 0.20);
+        --shadow-xl: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.20), 0px 8px 10px 1px hsl(216 100.0000% 19.6078% / 0.20);
+        --shadow-2xl: 0px 4px 12px 2px hsl(216 100.0000% 19.6078% / 0.50);
+        --tracking-normal: 0.01em;
+        --spacing: 0.25rem;
+      }
+
+      .dark {
+        --background: oklch(0.1358 0.0163 262.7113);
+        --foreground: oklch(0.9838 0.0035 247.8583);
+        --card: oklch(0.1773 0.0294 265.8175);
+        --card-foreground: oklch(0.9838 0.0035 247.8583);
+        --popover: oklch(0.1773 0.0294 265.8175);
+        --popover-foreground: oklch(0.9838 0.0035 247.8583);
+        --primary: oklch(0.6261 0.1859 259.5957);
+        --primary-foreground: oklch(0.1358 0.0163 262.7113);
+        --secondary: oklch(0.2757 0.0353 259.7107);
+        --secondary-foreground: oklch(0.9838 0.0035 247.8583);
+        --muted: oklch(0.2264 0.0262 259.7488);
+        --muted-foreground: oklch(0.7100 0.0348 256.7872);
+        --accent: oklch(0.2757 0.0353 259.7107);
+        --accent-foreground: oklch(0.9838 0.0035 247.8583);
+        --destructive: oklch(0.3901 0.1297 25.5736);
+        --destructive-foreground: oklch(0.9838 0.0035 247.8583);
+        --border: oklch(0.2757 0.0353 259.7107);
+        --input: oklch(0.2757 0.0353 259.7107);
+        --ring: oklch(0.4896 0.2153 264.2694);
+        --chart-1: oklch(0.5449 0.2154 262.7414);
+        --chart-2: oklch(0.7211 0.1415 253.1015);
+        --chart-3: oklch(0.6325 0.1843 258.6360);
+        --chart-4: oklch(0.8117 0.0970 249.0979);
+        --chart-5: oklch(0.8829 0.0573 251.9139);
+        --sidebar: oklch(0.1230 0.0139 261.2424);
+        --sidebar-foreground: oklch(0.9187 0.0177 248.0206);
+        --sidebar-primary: oklch(0.6261 0.1859 259.5957);
+        --sidebar-primary-foreground: oklch(0.1358 0.0163 262.7113);
+        --sidebar-accent: oklch(0.2563 0.0317 259.7237);
+        --sidebar-accent-foreground: oklch(0.9838 0.0035 247.8583);
+        --sidebar-border: oklch(0.2264 0.0262 259.7488);
+        --sidebar-ring: oklch(0.4896 0.2153 264.2694);
+        --font-sans: EB Garamond, serif;
+        --font-serif: EB Garamond, serif;
+        --font-mono: JetBrains Mono, monospace;
+        --radius: 0.3rem;
+        --shadow-x: 0px;
+        --shadow-y: 10px;
+        --shadow-blur: 25px;
+        --shadow-spread: 4px;
+        --shadow-opacity: 0.7;
+        --shadow-color: rgba(0, 0, 0, 0.8);
+        --shadow-2xs: 0px 10px 25px 4px hsl(0 0% 0% / 0.35);
+        --shadow-xs: 0px 10px 25px 4px hsl(0 0% 0% / 0.35);
+        --shadow-sm: 0px 10px 25px 4px hsl(0 0% 0% / 0.70), 0px 1px 2px 3px hsl(0 0% 0% / 0.70);
+        --shadow: 0px 10px 25px 4px hsl(0 0% 0% / 0.70), 0px 1px 2px 3px hsl(0 0% 0% / 0.70);
+        --shadow-md: 0px 10px 25px 4px hsl(0 0% 0% / 0.70), 0px 2px 4px 3px hsl(0 0% 0% / 0.70);
+        --shadow-lg: 0px 10px 25px 4px hsl(0 0% 0% / 0.70), 0px 4px 6px 3px hsl(0 0% 0% / 0.70);
+        --shadow-xl: 0px 10px 25px 4px hsl(0 0% 0% / 0.70), 0px 8px 10px 3px hsl(0 0% 0% / 0.70);
+        --shadow-2xl: 0px 10px 25px 4px hsl(0 0% 0% / 1.75);
+      }
+
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+        --color-sidebar: var(--sidebar);
+        --color-sidebar-foreground: var(--sidebar-foreground);
+        --color-sidebar-primary: var(--sidebar-primary);
+        --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+        --color-sidebar-accent: var(--sidebar-accent);
+        --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+        --color-sidebar-border: var(--sidebar-border);
+        --color-sidebar-ring: var(--sidebar-ring);
+
+        --font-sans: var(--font-sans);
+        --font-mono: var(--font-mono);
+        --font-serif: var(--font-serif);
+
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+
+        --shadow-2xs: var(--shadow-2xs);
+        --shadow-xs: var(--shadow-xs);
+        --shadow-sm: var(--shadow-sm);
+        --shadow: var(--shadow);
+        --shadow-md: var(--shadow-md);
+        --shadow-lg: var(--shadow-lg);
+        --shadow-xl: var(--shadow-xl);
+        --shadow-2xl: var(--shadow-2xl);
+
+        --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+        --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+        --tracking-normal: var(--tracking-normal);
+        --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+        --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+        --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+      }
+
+      body {
+        letter-spacing: var(--tracking-normal);
+      }
+
+      :root {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font-sans);
+        font-size: 18px;
+        line-height: 1.7;
+        color: var(--color-foreground);
+        background: var(--color-background);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .font-display {
+        font-family: var(--font-serif);
+      }
+
+      .font-tech {
+        font-family: var(--font-mono);
+      }
+
+      .bg-base {
+        background-color: var(--color-background);
+      }
+
+      .bg-surface {
+        background-color: var(--color-card);
+      }
+
+      .bg-elevated {
+        background-color: var(--color-secondary);
+      }
+
+      .bg-accent {
+        background-color: var(--color-accent);
+      }
+
+      .text-primary {
+        color: var(--color-primary);
+      }
+
+      .text-secondary {
+        color: var(--color-secondary-foreground);
+      }
+
+      .text-muted {
+        color: var(--color-muted-foreground);
+      }
+
+      .text-contrast {
+        color: var(--color-accent-foreground);
+      }
+
+      .border-subtle {
+        border-color: var(--color-border);
+      }
+
+      .shadow-soft {
+        box-shadow: var(--shadow);
+      }
+
+      .shadow-strong {
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card {
+        background: var(--color-card);
+        color: var(--color-card-foreground);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+        transition: transform 240ms ease, box-shadow 240ms ease;
+        position: relative;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 85% 15%,
+          var(--color-accent),
+          transparent 60%
+        );
+        opacity: 0;
+        mix-blend-mode: soft-light;
+        transition: opacity 240ms ease;
+        pointer-events: none;
+      }
+
+      .card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav-link {
+        color: var(--color-muted-foreground);
+        transition: color 200ms ease;
+      }
+
+      .nav-link:hover,
+      .nav-link:focus {
+        color: var(--color-primary);
+      }
+
+      .btn-primary {
+        background: var(--color-primary);
+        color: var(--color-primary-foreground);
+        border: 1px solid transparent;
+        transition: transform 200ms ease, filter 200ms ease,
+          box-shadow 200ms ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .btn-primary:hover,
+      .btn-primary:focus {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-outline {
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        background: transparent;
+        transition: transform 200ms ease, background 200ms ease,
+          box-shadow 200ms ease;
+      }
+
+      .btn-outline:hover,
+      .btn-outline:focus {
+        background: var(--color-secondary);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow);
+      }
+
+      .logo-mark {
+        width: 52px;
+        height: 52px;
+        border-radius: 999px;
+        border: 1px solid var(--color-border);
+        background: linear-gradient(
+          135deg,
+          var(--color-card),
+          var(--color-secondary)
+        );
+        display: grid;
+        place-items: center;
+      }
+
+      .logo-mark span {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        background: var(--color-accent);
+      }
+
+      .input-field {
+        background: var(--color-input);
+        border: 1px solid var(--color-border);
+        color: var(--color-foreground);
+        transition: border 200ms ease, box-shadow 200ms ease;
+      }
+
+      .input-field::placeholder {
+        color: var(--color-muted-foreground);
+      }
+
+      .input-field:focus {
+        outline: 2px solid var(--color-ring);
+        outline-offset: 2px;
+      }
+
+      .badge {
+        border: 1px solid var(--color-border);
+        color: var(--color-secondary-foreground);
+        background: var(--color-secondary);
+      }
+
+      .section-tag {
+        letter-spacing: 0.2em;
+      }
+
+      .hero-art {
+        position: relative;
+        min-height: 190px;
+        border-radius: calc(var(--radius) + 8px);
+        border: 1px solid var(--color-border);
+        background: linear-gradient(
+          135deg,
+          var(--color-card),
+          var(--color-secondary)
+        );
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+      }
+
+      .hero-art::before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        background: radial-gradient(
+            circle at 20% 20%,
+            var(--color-accent),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 80% 0%,
+            var(--color-primary),
+            transparent 45%
+          );
+        opacity: 0.45;
+        mix-blend-mode: soft-light;
+      }
+
+      .hero-art::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            120deg,
+            var(--color-border) 1px,
+            transparent 1px
+          ),
+          linear-gradient(0deg, var(--color-border) 1px, transparent 1px);
+        background-size: 28px 28px;
+        opacity: 0.12;
+      }
+
+      .hero-art-label {
+        position: relative;
+        z-index: 1;
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: calc(var(--radius) + 6px);
+        padding: 12px 16px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .icon-pill {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: var(--color-secondary);
+        border: 1px solid var(--color-border);
+        color: var(--color-primary);
+        box-shadow: var(--shadow-2xs);
+      }
+
+      .icon-pill svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .swatch {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 1px solid var(--color-border);
+        border-radius: calc(var(--radius) + 6px);
+        padding: 10px 14px;
+        background: var(--color-secondary);
+      }
+
+      .swatch-dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: var(--swatch-color, var(--color-primary));
+        box-shadow: var(--shadow-2xs);
+      }
+
+      .divider-line {
+        width: 100%;
+        height: 1px;
+        background: var(--color-border);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .card:hover::after,
+        .card:focus-within::after {
+          opacity: 0.45;
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .js .reveal,
+      .js .card {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      .js.loaded .reveal,
+      .js.loaded .card {
+        animation: fadeUp 0.8s ease forwards;
+        animation-delay: var(--delay, 0s);
+      }
+
+      .theme-transition,
+      .theme-transition * {
+        transition: background-color 0.35s ease, color 0.35s ease,
+          border-color 0.35s ease, box-shadow 0.35s ease;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .js .reveal,
+        .js .card {
+          opacity: 1;
+          transform: none;
+        }
+
+        .js.loaded .reveal,
+        .js.loaded .card {
+          animation: none;
+        }
+
+        .theme-transition,
+        .theme-transition * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen">
+      <!-- Header -->
+      <header
+        class="reveal mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-6 px-6 py-8"
+        style="--delay: 0.05s"
+      >
+        <div class="flex flex-1 items-center gap-3">
+          <div class="logo-mark" aria-hidden="true">
+            <span></span>
+          </div>
+          <div>
+            <p class="font-tech text-sm uppercase text-muted section-tag">
+              Clínica veterinaria
+            </p>
+            <p class="font-display text-2xl text-primary">Veterinaria Peludos</p>
+          </div>
+        </div>
+        <nav class="hidden items-center gap-6 text-base font-tech lg:flex">
+          <a class="nav-link" href="#caso">Caso de estudio</a>
+          <a class="nav-link" href="#servicios">Servicios</a>
+          <a class="nav-link" href="#nosotros">Sobre nosotros</a>
+          <a class="nav-link" href="#contacto">Contacto</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <button
+            class="btn-outline rounded-full px-4 py-2 text-sm font-tech sm:text-base"
+            id="theme-toggle"
+            type="button"
+            aria-pressed="true"
+          >
+            Modo claro
+          </button>
+          <a
+            class="btn-primary hidden items-center justify-center rounded-full px-5 py-2 text-base font-semibold sm:inline-flex"
+            href="#caso"
+          >
+            Mirá el prototipo
+          </a>
+        </div>
+      </header>
+
+      <main class="mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 pb-20">
+        <!-- Hero -->
+        <section
+          class="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]"
+          id="inicio"
+        >
+          <div
+            class="reveal flex flex-col gap-6 items-center text-center lg:items-start lg:text-left"
+            style="--delay: 0.1s"
+          >
+            <p class="font-tech text-sm uppercase text-secondary section-tag">
+              Cuidado integral
+            </p>
+            <span class="badge w-fit rounded-full px-4 py-2 text-sm font-tech">
+              Proyecto de portafolio
+            </span>
+            <h1 class="font-display text-5xl leading-tight md:text-6xl">
+              Bienestar calmado y profesional para cada mascota.
+            </h1>
+            <p class="text-lg text-muted md:text-xl">
+              En Veterinaria Peludos cuidamos a tus compañeros con un equipo
+              experto, tecnología actual y una atención cercana que inspira
+              confianza en cada visita.
+            </p>
+            <div class="flex flex-wrap items-center gap-4">
+              <a
+                class="btn-primary rounded-full px-6 py-3 text-base font-semibold"
+                href="#caso"
+              >
+                Mirá el prototipo
+              </a>
+              <a
+                class="btn-outline rounded-full px-6 py-3 text-base font-semibold"
+                href="#servicios"
+              >
+                Conocé los servicios
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span class="badge rounded-full px-4 py-2 text-sm font-tech">
+                Urgencias 24/7
+              </span>
+              <span class="badge rounded-full px-4 py-2 text-sm font-tech">
+                Laboratorio propio
+              </span>
+              <span class="badge rounded-full px-4 py-2 text-sm font-tech">
+                Equipo multiespecie
+              </span>
+            </div>
+          </div>
+          <div class="card flex flex-col gap-6 p-12" style="--delay: 0.18s">
+            <div class="flex items-center justify-between">
+              <p class="font-tech text-sm uppercase text-muted section-tag">
+                Nuestra promesa
+              </p>
+              <span class="font-tech text-sm text-secondary">Desde 2012</span>
+            </div>
+            <h2 class="font-display text-4xl">
+              Clínica calmada, segura y pensada para los peludos.
+            </h2>
+            <p class="text-base text-muted">
+              Espacios amplios, luz natural y protocolos suaves para reducir el
+              estrés. Estamos listos para acompañarte en cada etapa.
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="bg-elevated rounded-2xl border border-subtle p-6">
+                <p class="font-tech text-sm text-muted">Atención</p>
+                <p class="font-display text-3xl text-primary">+8</p>
+                <p class="text-sm text-muted">Especialistas en cuidado integral</p>
+              </div>
+              <div class="bg-elevated rounded-2xl border border-subtle p-6">
+                <p class="font-tech text-sm text-muted">Satisfacción</p>
+                <p class="font-display text-3xl text-primary">98%</p>
+                <p class="text-sm text-muted">
+                  Familias que vuelven cada año
+                </p>
+              </div>
+            </div>
+            <div class="hero-art mt-4">
+              <div class="hero-art-label">
+                <p class="font-tech text-sm uppercase text-secondary section-tag">
+                  Guía visual
+                </p>
+                <p class="font-display text-2xl">Sello editorial premium</p>
+                <p class="text-sm text-muted">
+                  Tipografías clásicas y composición limpia para transmitir
+                  confianza.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Caso de estudio -->
+        <section
+          class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]"
+          id="caso"
+        >
+          <div
+            class="reveal flex flex-col gap-4 items-center text-center lg:items-start lg:text-left"
+            style="--delay: 0.22s"
+          >
+            <p class="font-tech text-sm uppercase text-secondary section-tag">
+              Caso de estudio
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl">
+              Landing ficticia para portafolio con foco en claridad y confianza.
+            </h2>
+            <p class="text-lg text-muted md:text-xl">
+              Este proyecto muestra una propuesta de marca para una clínica
+              veterinaria moderna. La intención es comunicar calidez, orden y
+              profesionalismo en una experiencia simple y responsive.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="badge rounded-full px-4 py-2 text-sm font-tech">
+                Rol: UX/UI + Frontend
+              </span>
+              <span class="badge rounded-full px-4 py-2 text-sm font-tech">
+                Stack: HTML + Tailwind CDN
+              </span>
+              <span class="badge rounded-full px-4 py-2 text-sm font-tech">
+                Entrega: Landing + tema oscuro
+              </span>
+            </div>
+          </div>
+          <div class="grid gap-6">
+            <div class="card flex flex-col gap-4 p-10" style="--delay: 0.26s">
+              <h3 class="font-display text-3xl">Objetivos del proyecto</h3>
+              <ul class="flex flex-col gap-3 text-base text-muted">
+                <li>
+                  Generar confianza con tipografía elegante y jerarquía clara.
+                </li>
+                <li>
+                  Hacer visible el llamado a la acción en menos de 3 segundos.
+                </li>
+                <li>
+                  Mantener accesibilidad y lectura cómoda en móvil.
+                </li>
+              </ul>
+            </div>
+            <div class="card flex flex-col gap-4 p-10" style="--delay: 0.3s">
+              <h3 class="font-display text-3xl">Resultados esperados</h3>
+              <ul class="flex flex-col gap-3 text-base text-muted">
+                <li>Mayor conversión del formulario de contacto.</li>
+                <li>Claridad en servicios y propuesta de valor.</li>
+                <li>Diseño flexible y fácil de editar.</li>
+              </ul>
+            </div>
+            <div class="card flex flex-col gap-4 p-10" style="--delay: 0.34s">
+              <h3 class="font-display text-3xl">Sistema de marca</h3>
+              <div class="grid gap-3 sm:grid-cols-2">
+                <div class="swatch font-tech text-sm">
+                  Primario
+                  <span class="swatch-dot" style="--swatch-color: var(--color-primary)"></span>
+                </div>
+                <div class="swatch font-tech text-sm">
+                  Fondo
+                  <span class="swatch-dot" style="--swatch-color: var(--color-background)"></span>
+                </div>
+                <div class="swatch font-tech text-sm">
+                  Acento
+                  <span class="swatch-dot" style="--swatch-color: var(--color-accent)"></span>
+                </div>
+                <div class="swatch font-tech text-sm">
+                  Borde
+                  <span class="swatch-dot" style="--swatch-color: var(--color-border)"></span>
+                </div>
+              </div>
+              <div class="divider-line"></div>
+              <div class="flex flex-col gap-1">
+                <span class="font-display text-2xl">EB Garamond</span>
+                <span class="font-tech text-sm text-secondary">
+                  JetBrains Mono para detalles técnicos
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Servicios -->
+        <section class="flex flex-col gap-10" id="servicios">
+          <div
+            class="reveal flex flex-col gap-3 text-center lg:text-left"
+            style="--delay: 0.32s"
+          >
+            <p class="font-tech text-sm uppercase text-secondary section-tag">
+              Servicios
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl">
+              Todo lo que tu mascota necesita en un solo lugar.
+            </h2>
+            <p class="text-lg text-muted md:text-xl">
+              Consultas, prevención y tratamientos avanzados con un enfoque
+              humano, rápido y transparente.
+            </p>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <article class="card flex flex-col gap-4 p-10" style="--delay: 0.36s">
+              <div class="icon-pill" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 3v4a4 4 0 0 0 8 0V3" />
+                  <path d="M5 3H3" />
+                  <path d="M13 3h2" />
+                  <path d="M12 14a4 4 0 1 0 8 0v-1" />
+                  <circle cx="20" cy="10" r="2" />
+                </svg>
+              </div>
+              <p class="font-tech text-sm uppercase text-secondary section-tag">
+                Consulta
+              </p>
+              <h3 class="font-display text-3xl">Consultas generales</h3>
+              <p class="text-base text-muted">
+                Evaluaciones completas, seguimiento y planes de bienestar
+                personalizados.
+              </p>
+              <p class="font-tech text-sm text-secondary">Duración 30-45 min</p>
+            </article>
+            <article class="card flex flex-col gap-4 p-10" style="--delay: 0.4s">
+              <div class="icon-pill" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 21l6-6" />
+                  <path d="M14 4l6 6" />
+                  <path d="M12 12l4-4" />
+                  <path d="M7 17l-2 2" />
+                  <path d="M16 2l6 6" />
+                </svg>
+              </div>
+              <p class="font-tech text-sm uppercase text-secondary section-tag">
+                Prevención
+              </p>
+              <h3 class="font-display text-3xl">Vacunación</h3>
+              <p class="text-base text-muted">
+                Calendarios actualizados y aplicación segura para todas las
+                etapas.
+              </p>
+              <p class="font-tech text-sm text-secondary">Recordatorios incluidos</p>
+            </article>
+            <article class="card flex flex-col gap-4 p-10" style="--delay: 0.44s">
+              <div class="icon-pill" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 20l8-8" />
+                  <path d="M14 4l6 6" />
+                  <path d="M9 15l5 5" />
+                </svg>
+              </div>
+              <p class="font-tech text-sm uppercase text-secondary section-tag">
+                Quirúrgico
+              </p>
+              <h3 class="font-display text-3xl">Cirugías</h3>
+              <p class="text-base text-muted">
+                Procedimientos con monitoreo constante y recuperación guiada.
+              </p>
+              <p class="font-tech text-sm text-secondary">Equipo experto</p>
+            </article>
+            <article class="card flex flex-col gap-4 p-10" style="--delay: 0.48s">
+              <div class="icon-pill" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 3l9 16H3z" />
+                  <path d="M12 9v4" />
+                  <circle cx="12" cy="17" r="1" />
+                </svg>
+              </div>
+              <p class="font-tech text-sm uppercase text-secondary section-tag">
+                Urgencias
+              </p>
+              <h3 class="font-display text-3xl">Atención inmediata</h3>
+              <p class="text-base text-muted">
+                Respuesta rápida y protocolos de estabilización en todo momento.
+              </p>
+              <p class="font-tech text-sm text-secondary">Disponibilidad 24/7</p>
+            </article>
+            <article class="card flex flex-col gap-4 p-10" style="--delay: 0.52s">
+              <div class="icon-pill" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M10 2h4" />
+                  <path d="M10 2v5l-5 9a4 4 0 0 0 3.5 6h7a4 4 0 0 0 3.5-6l-5-9V2" />
+                  <path d="M8 14h8" />
+                </svg>
+              </div>
+              <p class="font-tech text-sm uppercase text-secondary section-tag">
+                Diagnóstico
+              </p>
+              <h3 class="font-display text-3xl">Laboratorio</h3>
+              <p class="text-base text-muted">
+                Análisis internos para resultados confiables y rápidos.
+              </p>
+              <p class="font-tech text-sm text-secondary">Resultados en el día</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Confianza -->
+        <section class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]" id="confianza">
+          <div
+            class="reveal flex flex-col gap-4 items-center text-center lg:items-start lg:text-left"
+            style="--delay: 0.56s"
+          >
+            <p class="font-tech text-sm uppercase text-secondary section-tag">
+              Confianza
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl">
+              Señales claras de calidad para que el proyecto se vea premium.
+            </h2>
+            <p class="text-lg text-muted md:text-xl">
+              Sumamos métricas, testimonios y estándares visuales para que la
+              propuesta se perciba sólida desde el primer vistazo.
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="bg-elevated rounded-2xl border border-subtle p-6">
+                <p class="font-tech text-sm uppercase text-muted">Familias</p>
+                <p class="font-display text-3xl text-primary">+1.200</p>
+                <p class="text-sm text-muted">Valor demostrativo de portafolio</p>
+              </div>
+              <div class="bg-elevated rounded-2xl border border-subtle p-6">
+                <p class="font-tech text-sm uppercase text-muted">Reseñas</p>
+                <p class="font-display text-3xl text-primary">4.9</p>
+                <p class="text-sm text-muted">Experiencia consistente y cálida</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid gap-6">
+            <figure class="card flex flex-col gap-4 p-10" style="--delay: 0.6s">
+              <p class="font-display text-2xl text-primary">“</p>
+              <blockquote class="text-base text-muted">
+                Nos acompañaron con un trato humano y explicaciones claras. Se
+                nota la calma desde que entrás.
+              </blockquote>
+              <figcaption class="font-tech text-sm text-secondary">
+                Martina P. · Tutora de Mora
+              </figcaption>
+            </figure>
+            <figure class="card flex flex-col gap-4 p-10" style="--delay: 0.64s">
+              <p class="font-display text-2xl text-primary">“</p>
+              <blockquote class="text-base text-muted">
+                La comunicación fue directa y el seguimiento impecable. Da
+                confianza dejar a tu mascota en manos así.
+              </blockquote>
+              <figcaption class="font-tech text-sm text-secondary">
+                Diego R. · Tutor de Milo
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- Sobre nosotros -->
+        <section class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]" id="nosotros">
+          <div
+            class="reveal flex flex-col gap-4 items-center text-center lg:items-start lg:text-left"
+            style="--delay: 0.56s"
+          >
+            <p class="font-tech text-sm uppercase text-secondary section-tag">
+              Sobre nosotros
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl">
+              Un equipo que combina ciencia, empatía y experiencia real.
+            </h2>
+            <p class="text-lg text-muted md:text-xl">
+              Somos una clínica orientada al bienestar integral. Trabajamos con
+              protocolos claros, comunicación honesta y seguimiento continuo para
+              que cada familia sienta confianza en cada paso.
+            </p>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <div class="bg-elevated rounded-2xl border border-subtle p-6">
+                <p class="font-tech text-sm uppercase text-muted">Equipo</p>
+                <p class="font-display text-3xl text-primary">15+</p>
+                <p class="text-base text-muted">
+                  Profesionales especializados
+                </p>
+              </div>
+              <div class="bg-elevated rounded-2xl border border-subtle p-6">
+                <p class="font-tech text-sm uppercase text-muted">Tecnología</p>
+                <p class="font-display text-3xl text-primary">3</p>
+                <p class="text-base text-muted">Salas equipadas y laboratorio</p>
+              </div>
+            </div>
+          </div>
+          <div class="card flex flex-col gap-6 p-12" style="--delay: 0.62s">
+            <h3 class="font-display text-3xl">Nuestra forma de cuidar</h3>
+            <ul class="flex flex-col gap-4 text-base text-muted">
+              <li>
+                <span class="font-tech text-sm text-secondary">01</span>
+                <span> Diagnóstico claro y explicaciones sencillas.</span>
+              </li>
+              <li>
+                <span class="font-tech text-sm text-secondary">02</span>
+                <span> Planes preventivos adaptados a cada mascota.</span>
+              </li>
+              <li>
+                <span class="font-tech text-sm text-secondary">03</span>
+                <span> Seguimiento post consulta con recordatorios útiles.</span>
+              </li>
+            </ul>
+            <div class="bg-accent rounded-2xl px-6 py-5">
+              <p class="text-base text-contrast">
+                Horarios extendidos de lunes a sábado para acomodarnos a tu
+                rutina.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="flex flex-col gap-10" id="contacto">
+          <div
+            class="reveal flex flex-col gap-3 items-center text-center lg:items-start lg:text-left"
+            style="--delay: 0.66s"
+          >
+            <p class="font-tech text-sm uppercase text-secondary section-tag">
+              Contacto
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl">
+              Hablemos de tu proyecto.
+            </h2>
+            <p class="text-lg text-muted md:text-xl">
+              Este bloque simula un formulario real para mostrar el layout. Si
+              querés este estilo, lo adaptamos con tus datos y necesidades.
+            </p>
+          </div>
+          <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="card flex flex-col gap-6 p-10" style="--delay: 0.72s">
+              <h3 class="font-display text-3xl">Datos de contacto</h3>
+              <div class="flex flex-col gap-4 text-base text-muted">
+                <p>
+                  <span class="font-tech text-sm text-secondary">Dirección</span
+                  ><br />
+                  Calle Ficticia 123, Ciudad Demo
+                </p>
+                <p>
+                  <span class="font-tech text-sm text-secondary">Teléfono</span
+                  ><br />
+                  +00 000 000 000
+                </p>
+                <p>
+                  <span class="font-tech text-sm text-secondary">Email</span
+                  ><br />
+                  contacto@ejemplo.com
+                </p>
+                <p>
+                  <span class="font-tech text-sm text-secondary">Horario</span
+                  ><br />
+                  Lun - Sáb / 08:00 - 20:00 (demo)
+                </p>
+              </div>
+              <div class="bg-elevated rounded-2xl border border-subtle p-6">
+                <p class="text-base text-muted">
+                  Datos ficticios para portafolio. Si querés un sitio similar,
+                  escribime y armamos tu versión real.
+                </p>
+              </div>
+            </div>
+            <form class="card flex flex-col gap-4 p-10" style="--delay: 0.78s">
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="flex flex-col gap-2">
+                  <label class="font-tech text-sm text-secondary" for="nombre"
+                    >Nombre</label
+                  >
+                  <input
+                    class="input-field w-full rounded-xl px-4 py-3 text-base"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Tu nombre"
+                    type="text"
+                  />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label class="font-tech text-sm text-secondary" for="telefono"
+                    >Teléfono</label
+                  >
+                  <input
+                    class="input-field w-full rounded-xl px-4 py-3 text-base"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Tu teléfono"
+                    type="tel"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="font-tech text-sm text-secondary" for="correo"
+                  >Email</label
+                >
+                <input
+                  class="input-field w-full rounded-xl px-4 py-3 text-base"
+                  id="correo"
+                  name="correo"
+                  placeholder="Tu email"
+                  type="email"
+                />
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="font-tech text-sm text-secondary" for="mensaje"
+                  >Mensaje</label
+                >
+                <textarea
+                  class="input-field w-full min-h-[130px] rounded-xl px-4 py-3 text-base"
+                  id="mensaje"
+                  name="mensaje"
+                  placeholder="Contanos sobre tu mascota"
+                ></textarea>
+              </div>
+              <button
+                class="btn-primary rounded-full px-6 py-3 text-base font-semibold"
+                type="submit"
+              >
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="reveal border-t border-subtle bg-surface"
+        style="--delay: 0.82s"
+      >
+        <div
+          class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between"
+        >
+          <div>
+            <p class="font-display text-xl text-primary">Veterinaria Peludos</p>
+            <p class="text-base text-muted">
+              Proyecto ficticio para portafolio. Cuidado integral con calidez.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-4 text-base font-tech text-muted">
+            <span>Calle Ficticia 123</span>
+            <span>+00 000 000 000</span>
+            <span>contacto@ejemplo.com</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const toggle = document.getElementById("theme-toggle");
+        const storageKey = "vp-theme";
+
+        const applyTheme = (theme, withTransition = false) => {
+          if (withTransition) {
+            root.classList.add("theme-transition");
+            window.setTimeout(() => {
+              root.classList.remove("theme-transition");
+            }, 350);
+          }
+
+          const isDark = theme === "dark";
+          root.classList.toggle("dark", isDark);
+          if (toggle) {
+            toggle.textContent = isDark ? "Modo claro" : "Modo oscuro";
+            toggle.setAttribute("aria-pressed", String(isDark));
+          }
+        };
+
+        const saved = localStorage.getItem(storageKey);
+        if (saved === "dark" || saved === "light") {
+          applyTheme(saved);
+        } else {
+          applyTheme("dark");
+        }
+
+        const startReveal = () => {
+          window.requestAnimationFrame(() => {
+            root.classList.add("loaded");
+          });
+        };
+
+        if (document.readyState === "complete") {
+          startReveal();
+        } else {
+          window.addEventListener("load", startReveal, { once: true });
+        }
+
+        if (toggle) {
+          toggle.addEventListener("click", () => {
+            const next = root.classList.contains("dark") ? "light" : "dark";
+            applyTheme(next, true);
+            localStorage.setItem(storageKey, next);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
+
